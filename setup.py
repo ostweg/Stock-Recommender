@@ -4,7 +4,7 @@ from pathlib import Path
 # version
 here = Path(__file__).absolute().parent
 version_data = {}
-with open(here.joinpath("miguellib", "__init__.py"), "r") as f:
+with open(here.joinpath("stockrecolib", "__init__.py"), "r") as f:
     exec(f.read(), version_data)
 version = version_data.get("__version__", "0.0")
 
@@ -18,10 +18,10 @@ install_requires = [
 ]
 
 setup(
-    name="miguellib",
+    name="stockrecolib",
     version=version,
     install_requires=install_requires,
-    package_dir={"miguellib": "miguellib"},
+    package_dir={"stockrecolib": "stockrecolib"},
     python_requires=">=3.6, <3.10",
     packages=find_packages(where=".", exclude=["docs", "examples", "tests"]),
 )
