@@ -2,29 +2,19 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: General path 1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
-
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
-
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
+  - intent: assistance
+  - action: utter_menu
+  - intent: goodbye
   - action: utter_goodbye
+
+- story: General path 
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_historical_data_stock
+  - action: action_extract_stock_entity
+  # - action: utter_ask_historical_data_time

@@ -4,6 +4,7 @@ nlu:
 - intent: greet
   examples: |
     - hey
+    - sup
     - hello
     - hi
     - hello there
@@ -16,10 +17,38 @@ nlu:
     - goodmorning
     - goodevening
     - good afternoon
-
+- intent: assistance
+  examples: |
+    - I need help
+    - help
+    - help me
+    - assistance
+    - help please 
+    - what can you do?
+    - Ok, what can you do ?
+    - what can you do for me ?
+    - what can I get from you ?
+    - how can you help me?
+    - can I get help from you? 
+    - idk
+    - I don't know
+    - tell me about it
+- intent: ask_historical_data_stock
+  examples: |
+    - Give me the historical data of [Apple](stock)
+    - Give me the historical infromation of [Apple](stock)
+    - I want the historical data of [AAPL](stock)
+    - I want the historical information of [AAPL](stock)
+    - I want insights on [AAPL](stock)
+    - [APPLE](stock) historical information
+    - [AAPL](stock) historical data
+    - historical data of [Apple](stock)
+    - historical information of [APPL](stock)
 - intent: goodbye
   examples: |
     - cu
+    - cya
+    - later
     - good by
     - cee you later
     - good night
@@ -87,5 +116,9 @@ nlu:
   examples: |
     - are you a bot?
     - are you a human?
+    - who are you?
+    - what are you?
+    - identify yourself
+    - explain who you are
     - am I talking to a bot?
     - am I talking to a human?
