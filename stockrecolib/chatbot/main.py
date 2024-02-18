@@ -58,3 +58,79 @@ def plot_stock_price(ticker):
     plt.close()
 
 
+functions = [
+    {
+        'name':'get_stock_price',
+        'description':'Gets the latest stock price given the ticker symbol of a company.',
+        'parameters':{
+            'type':'object',
+            'properties': {
+                'ticker': {
+                    'type':'string',
+                    'description':'The stock ticker symbol for a company (for example AAPL for Apple).'
+                }
+            },
+            'required':['ticker']
+        }        
+    },
+    {
+        'name':'calculate_SMA',
+        'description':'Calculate the simple moving average for a given stock ticker and a window.',
+        'parameters':{
+            'type':'object',
+            'properties': {
+                'ticker': {
+                    'type':'string',
+                    'description':'The stock ticker symbol for a company (for example AAPL for Apple).'
+                },
+                'window': {
+                    'type':'integer',
+                    'description':'The timeframe to consider when calculating the SMA'
+                }
+            },
+            'required':['ticker', 'window']
+        }
+    },
+    {
+        'name':'calculate_RSI',
+        'description':'Calculate the RSI for a given stock ticker.',
+        'parameters':{
+            'type':'object',
+            'properties': {
+                'ticker': {
+                    'type':'string',
+                    'description':'The stock ticker symbol for a company (for example AAPL for Apple).'
+                }
+            },
+            'required':['ticker']
+        }        
+    },
+    {
+        'name':'calculate_MACD',
+        'description':'Calculate the MACD for a given stock ticker.',
+        'parameters':{
+            'type':'object',
+            'properties': {
+                'ticker': {
+                    'type':'string',
+                    'description':'The stock ticker symbol for a company (for example AAPL for Apple).'
+                }
+            },
+            'required':['ticker']
+        }        
+    },
+    {
+        'name':'plot_stock_price',
+        'description':'Plot the stock price for the last year given the ticker symbol of a company.',
+        'parameters':{
+            'type':'object',
+            'properties': {
+                'ticker': {
+                    'type':'string',
+                    'description':'The stock ticker symbol for a company (for example AAPL for Apple).'
+                }
+            },
+            'required':['ticker']
+        }        
+    },
+]
