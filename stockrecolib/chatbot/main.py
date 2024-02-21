@@ -1,12 +1,17 @@
 import json
-import openai
+from openai import OpenAI
 import pandas as pd
 import matplotlib.pyplot as plt
 import streamlit as st
 import yfinance as yf
+import os
 
-openai.api_key = open('API_KEY', 'r').read()
 
+os.environ['OPEN_AI_KEY'] = 'key' 
+
+client = OpenAI(
+    api_key = os.environ.get('OPEN_AI_KEY')
+)
 
 def get_stock_price(ticker):
     return str(yf.Ticker(ticker).history(period='1y').iloc[-1].Close)
@@ -134,7 +139,6 @@ functions = [
         }        
     },
 ]
-
 available_functions = {
     'get_stock_price': get_stock_price,
     'calculate_SMA': calculate_SMA,
@@ -143,7 +147,6 @@ available_functions = {
     'calculate_MACD': calculate_MACD,
     'plot_stock_price': plot_stock_price
 }
-
 # Check if 'messages' is in session state, if not, initialize it as an empty list
 if 'messages' not in st.session_state:
     st.session_state['messages'] = []
@@ -160,22 +163,21 @@ if user_input:
         # Append the user's input to the session_state messages
         st.session_state['messages'].append({'role': 'user', 'content': user_input})
 
-        # Generate a response using the OpenAI API
-        response = openai.ChatCompletion.create(
-            model='gpt-3.5-turbo-0613',
+        response = client.chat.completions.create(
+            model="gpt-3.5-turbo",
             messages=st.session_state['messages'],
             functions=functions,
             function_call='auto'
         )
 
         # Extract the response message
-        response_message = response['choices'][0]['message']
-
+        # response_message1 = response['choices'][0]['message']
+        response_message = response.choices[0].message
         # If the response message indicates a function call
-        if response_message.get('function_call'):
-            # Extract the function name and arguments
-            function_name = response_message['function_call']['name']
-            function_args = json.loads(response_message['function_call']['arguments'])
+        if response_message.function_call:
+            # Extract the function name and argumentsx
+            function_name = response_message.function_call.name
+            function_args = json.loads(response_message.function_call.arguments)
 
             # Check if the function name matches any of the following
             if function_name in ['get_stock_price', 'calculate_RSI', 'calculate_MACD', 'plot_stock_price']:
@@ -201,16 +203,19 @@ if user_input:
                     }
                 )
 
-                second_response = openai.ChatCompletion.create(
-                    model='gpt-3.5-turbo-0613',
+                second_response = client.chat.completions.create(
+                    model='gpt-3.5-turbo',
                     messages=st.session_state['messages'],
+                    functions=functions,
+                    function_call='auto'
                 )
+                msg = second_response.choices[0].message.content.strip()
             # If there is no function call, display the response content and append it to messages
-                st.text(second_response['choices'][0]['message']['content'])
-                st.session_state['messages'].append({'role': 'assistant', 'content': second_response['choices'][0]['message']['content']})
+                st.text(msg)
+                st.session_state['messages'].append({'role': 'assistant', 'content': msg})
         else:
-            st.text(response_message['content'])
-            st.session_state['messages'].append({'role': 'assistant', 'content': response_message['content']})
+            st.text(response_message.content)
+            st.session_state['messages'].append({'role': 'assistant', 'content': response_message.content})
     # If there is an exception, prompt the user to try again
-    except:
-        st.text('Try again')
+    except Exception as e:
+        st.text(e)
