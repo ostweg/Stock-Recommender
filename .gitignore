@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 
 .rasa/cache
+/stockrecolib/chatbot/API_KEY

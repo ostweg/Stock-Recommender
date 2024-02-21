@@ -7,7 +7,7 @@ import yfinance as yf
 import os
 
 
-os.environ['OPEN_AI_KEY'] = '' 
+os.environ['OPEN_AI_KEY'] = open('API_KEY','r').read() 
 
 client = OpenAI(
     api_key = os.environ.get('OPEN_AI_KEY')
