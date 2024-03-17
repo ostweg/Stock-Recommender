@@ -36,7 +36,7 @@ nlu:
 - regex: stock
   examples: |
     - \b[A-Z]{2,5}\b
-- intent: ask_historical_data_stock
+- intent: ask_stock_price
   examples: |
     - Give me the historical data of [AAPL](stock)
     - Give me the historical infromation of [NVDA](stock)
@@ -47,6 +47,17 @@ nlu:
     - [GIB](stock) historical data
     - historical data of [ASX](stock)
     - historical information of [NTAP](stock)
+- intent: ask_stock_rsi
+  examples: |
+    - What is the current RSI of [IBM](stock)?
+    - Can you provide me with the RSI of [SHOP](stock)?
+    - I'm interested in knowing the RSI for [ANET](stock)?
+    - What's the RSI trend for [DELL](stock)?
+    - Could you give me the RSI value of [APH](stock)?
+    - What's the RSI status of [MSI](stock) right now?
+    - What's the RSI OF [ANSS](stock)?
+    - RSI [FIS](stock)
+    - [WIT](stock) RSI 
 - intent: goodbye
   examples: |
     - cu

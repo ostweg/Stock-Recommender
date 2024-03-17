@@ -3,7 +3,8 @@ version: "3.1"
 intents:
   - greet
   - assistance
-  - ask_historical_data_stock
+  - ask_stock_price
+  - ask_stock_rsi
   - goodbye
   - affirm
   - deny
@@ -44,7 +45,8 @@ responses:
   - text: "Till next time."
 
 actions:
-  - action_extract_stock_entity
+  - action_extract_stock_price
+  - action_extract_stock_rsi
 
 session_config:
   session_expiration_time: 60
