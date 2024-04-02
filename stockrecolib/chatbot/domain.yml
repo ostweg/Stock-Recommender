@@ -1,0 +1,55 @@
+version: "3.1"
+
+intents:
+  - greet
+  - assistance
+  - ask_stock_price
+  - ask_stock_rsi
+  - ask_stock_macd
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+
+entities:
+  - stock
+
+slots:
+  hashtag:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: stock
+
+responses:
+  utter_greet:
+  - text: "Hey! I'm a Stock Bot. How can I help you?"
+  - text: "Greetings! I can help you with any kind of stock related informations. How may I help you?"
+  - text: "Hello! How's it going? With what can I assist you today?"
+
+  utter_menu:
+  - text: "I can help you with 1. Retrieving the price of stocks 2. Getting historical data 3. Giving you some advice." 
+
+  utter_iamabot:
+  - text: "I am a stock information bot and I'm pleased to help you."
+
+  utter_ask_historical_data_time:
+  - text: "What should the time range be?"
+
+  utter_goodbye:
+  - text: "Bye!"
+  - text: "Cya!"
+  - text: "Later!"
+  - text: "Till next time."
+
+actions:
+  - action_extract_stock_price
+  - action_extract_stock_rsi
+  - action_extract_stock_macd
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
