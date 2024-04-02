@@ -57,7 +57,21 @@ nlu:
     - What's the RSI status of [MSI](stock) right now?
     - What's the RSI OF [ANSS](stock)?
     - RSI [FIS](stock)
-    - [WIT](stock) RSI 
+    - [WIT](stock) RSI
+- intent: ask_stock_macd
+  examples: |
+    - What is the MACD value for [AAPL](stock) right now? 
+    - What's the MACD of [FTNT](stock)?  
+    - Could you provide me with the MACD of [TSLA](stock)? 
+    - I'm interested in knowing the MACD for [GOOGL](stock) 
+    - What's the current MACD trend for [AMZN](stock)? 
+    - Give me the MACD value for [META](stock)? 
+    - What's the MACD status of [NFLX](stock)? 
+    - Could you give me the MACD for [NVDA](stock)? 
+    - I'd like to know the current MACD value for [JNJ](stock). 
+    - Show me the MACD analysis for [MA](stock). 
+    - MACD [WIT](stock)
+    - [ANSS](stock) MACD
 - intent: goodbye
   examples: |
     - cu

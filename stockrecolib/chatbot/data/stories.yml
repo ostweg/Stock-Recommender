@@ -14,3 +14,10 @@ stories:
   - action: utter_greet
   - intent: ask_stock_rsi
   - action: action_extract_stock_rsi
+
+- story: General path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_stock_macd
+  - action: action_extract_stock_macd
