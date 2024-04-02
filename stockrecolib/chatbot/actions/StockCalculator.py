@@ -28,3 +28,8 @@ class StockCalculator:
         MACD_histogram = MACD - signal
 
         return f'{MACD[-1]}, {signal[-1]}, {MACD_histogram[-1]}'
+    
+    def get_stock_news(self):
+        stock = yf.Ticker(self.ticker)
+        news = stock.info['longBusinessSummary']
+        return news

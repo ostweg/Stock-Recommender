@@ -21,3 +21,11 @@ stories:
   - action: utter_greet
   - intent: ask_stock_macd
   - action: action_extract_stock_macd
+
+
+- story: General path 3
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: ask_stock_news
+  - action: action_extract_stock_news

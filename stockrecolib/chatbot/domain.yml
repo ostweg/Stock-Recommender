@@ -49,6 +49,7 @@ actions:
   - action_extract_stock_price
   - action_extract_stock_rsi
   - action_extract_stock_macd
+  - action_extract_stock_news
 
 session_config:
   session_expiration_time: 60

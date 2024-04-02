@@ -72,6 +72,12 @@ nlu:
     - Show me the MACD analysis for [MA](stock). 
     - MACD [WIT](stock)
     - [ANSS](stock) MACD
+
+- intent: ask_stock_news
+  examples: |
+    -give me the stock news for [AAPL](stock)
+
+
 - intent: goodbye
   examples: |
     - cu
