@@ -6,6 +6,7 @@ intents:
   - ask_stock_price
   - ask_stock_rsi
   - ask_stock_macd
+  - ask_stock_news
   - goodbye
   - affirm
   - deny

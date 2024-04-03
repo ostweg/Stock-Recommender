@@ -78,8 +78,10 @@ class ExtractSockNews(Action):
         if stock_entity:
             
             sc = StockCalculator(stock_entity)
-
-            dispatcher.utter_message(text=f"The current news for {stock_entity} is {sc.get_stock_news()}")
+            news = sc.get_stock_news()
+            
+            dispatcher.utter_message(text=f"A current news for {stock_entity} is:")
+            dispatcher.utter_message(text=f"Title: {news['title']}\nPublisher: {news['publisher']}\nLink: {news['link']}")
         else:
             dispatcher.utter_message(text="I didn't get the stock name. What do you wanna do?")
         return []
