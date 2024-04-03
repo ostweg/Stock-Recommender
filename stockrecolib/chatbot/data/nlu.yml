@@ -47,6 +47,8 @@ nlu:
     - [GIB](stock) historical data
     - historical data of [ASX](stock)
     - historical information of [NTAP](stock)
+    - price [IBM](stock)
+    - [IBM](stock) price
 - intent: ask_stock_rsi
   examples: |
     - What is the current RSI of [IBM](stock)?
