@@ -6,6 +6,7 @@ intents:
   - ask_stock_price
   - ask_stock_rsi
   - ask_stock_macd
+  - ask_stock_news
   - goodbye
   - affirm
   - deny
@@ -49,6 +50,7 @@ actions:
   - action_extract_stock_price
   - action_extract_stock_rsi
   - action_extract_stock_macd
+  - action_extract_stock_news
 
 session_config:
   session_expiration_time: 60
