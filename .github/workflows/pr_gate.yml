@@ -1,59 +1,33 @@
-name: PR gate
+name: Rasa 
 
 on:
   push:
     branches:
-    - main
-
+      - main
   pull_request:
-    # Only trigger the workflow with a PR to main
     branches:
-    - main
-
-  # Enable manual trigger
-  workflow_dispatch:
-    input:
-      tags:
-        description: 'Tags to label this manual run (optional)'
-        default: 'Manual run'
-
-# Automatically cancel previous workflows if a new one is executed
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+      - main
 
 jobs:
-  test:
-    name: Test Python ${{ matrix.python }} on ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
-    timeout-minutes: 40
-    strategy:
-      fail-fast: false
-      max-parallel: 20 # Usage limits: https://docs.github.com/en/actions/learn-github-actions/usage-limits-billing-and-administration
-      matrix:
-        os: [ubuntu-22.04] # Available images: https://github.com/actions/runner-images/#available-images
-        python: ['3.7', '3.8']
-
+  training-testing:
+    name: Training and Testing
+    runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3 # Info: https://github.com/actions/checkout
-    
-    - name: Use Python ${{ matrix.python }}
-      uses: actions/setup-python@v4 # Info: https://github.com/actions/setup-python
-      with:
-        python-version: ${{ matrix.python }}
-    
-    - name: Install dependencies
-      run: |
-        pip install .
-
-    - name: Python version and dependency list
-      run: |
-        echo "Python version expected: ${{ matrix.python }}"
-        python --version
-        which python
-        pip list
-
-    - name: Run tests
-      run: |
-        pytest tests --disable-warnings --durations 0
+      - uses: actions/checkout@v1
+      - name: Rasa Train and Test GitHub Action
+        uses: RasaHQ/rasa-train-test-gha@main
+        with:
+          requirements_file: requirements.txt
+          data_validate: true
+          rasa_train: true
+          cross_validation: true
+          rasa_test: true
+          test_type: all
+          publish_summary: true
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload model
+        if: github.ref == 'refs/heads/main'
+        uses: actions/upload-artifact@master
+        with:
+          name: model
+          path: models
