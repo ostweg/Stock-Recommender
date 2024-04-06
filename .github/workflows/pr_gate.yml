@@ -16,6 +16,7 @@ jobs:
       - uses: actions/checkout@v1
       - name: Rasa Train and Test GitHub Action
         uses: RasaHQ/rasa-train-test-gha@main
+        working-directory: stockrecolib/chatbot
         with:
           data_validate: true
           rasa_train: true
@@ -24,7 +25,6 @@ jobs:
           test_type: all
           publish_summary: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          domain_path: stockrecolib/chatbot/domain.yml
       - name: Upload model
         if: github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@master
