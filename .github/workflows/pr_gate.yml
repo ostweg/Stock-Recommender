@@ -16,8 +16,8 @@ jobs:
       - uses: actions/checkout@v1
       - name: Rasa Train and Test GitHub Action
         uses: RasaHQ/rasa-train-test-gha@main
-        working-directory: stockrecolib/chatbot
         with:
+          working-directory: stockrecolib/chatbot
           data_validate: true
           rasa_train: true
           cross_validation: true
