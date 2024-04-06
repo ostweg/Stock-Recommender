@@ -12,12 +12,14 @@ jobs:
   training-testing:
     name: Training and Testing
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: stockrecolib/chatbot
     steps:
       - uses: actions/checkout@v1
       - name: Rasa Train and Test GitHub Action
         uses: RasaHQ/rasa-train-test-gha@main
         with:
-          working-directory: stockrecolib/chatbot
           data_validate: true
           rasa_train: true
           cross_validation: true
