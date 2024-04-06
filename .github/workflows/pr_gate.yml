@@ -3,10 +3,10 @@ name: Rasa
 on:
   push:
     branches:
-      - main
+      - master
   pull_request:
     branches:
-      - main
+      - master
 
 jobs:
   training-testing:
@@ -26,7 +26,7 @@ jobs:
           publish_summary: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Upload model
-        if: github.ref == 'refs/heads/main'
+        if: github.ref == 'refs/heads/master'
         uses: actions/upload-artifact@master
         with:
           name: model
