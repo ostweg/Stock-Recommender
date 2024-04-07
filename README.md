@@ -28,6 +28,8 @@ Before you begin, ensure you have the following installed:
 - streamlit
 - rasa
 - yfinance
+  
+Aditionally you'll need:
 - openai api key
 
 
