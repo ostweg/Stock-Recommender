@@ -1,0 +1,47 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: General path 
+  steps:
+  - user: |
+      hi
+    intent: greet
+  - action: utter_greet
+  - user: |
+      historical data of [AAPL](stock)
+    intent: ask_stock_price
+  - action: action_extract_stock_price
+
+- story: General path 1 
+  steps:
+  - user: |
+      hello
+    intent: greet
+  - action: utter_greet
+  - user: |
+      [NVDA](stock) rsi
+    intent: ask_stock_rsi
+  - action: action_extract_stock_rsi
+
+- story: General path 3
+  steps:
+  - user: |
+      hello there
+    intent: greet
+  - action: utter_greet
+  - user: |
+      what's the MACD of [FTNT](stock)?  
+    intent: ask_stock_macd
+  - action: action_extract_stock_macd
+
+- story: General path 4
+  steps:
+  - user: |
+      moin
+    intent: greet
+  - action: utter_greet
+  - user: |
+      Latest news [AMZN](stock)
+    intent: ask_stock_news
+  - action: action_extract_stock_news
