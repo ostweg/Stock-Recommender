@@ -25,6 +25,11 @@ Get a closer look at our Stock Recommender system in action through these demo v
 Before you begin, ensure you have the following installed:
 - Python 3.8 or higher
 - pip (Python package installer)
+- streamlit
+- rasa
+- yfinance
+- openai api key
+
 
 1. Clone the repository:
 ```bash
