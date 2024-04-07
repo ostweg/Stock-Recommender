@@ -29,7 +29,7 @@ Before you begin, ensure you have the following installed:
 - rasa
 - yfinance
   
-Aditionally you'll need:
+Additionally you'll need:
 - openai api key
 
 
@@ -39,7 +39,22 @@ Aditionally you'll need:
 git clone https://github.com/ostweg/Stock-Recommender.git
 cd Stock-Recommender
 ```
-
+2. Navigate to Rasa Chatbot, open two terminals & execute it
+```bash
+cd chatbot
+rasa run actions # in first terminal
+rasa shell # in second terminal
+```
+3. Navigate to OpenAI Chabot & execute it
+```bash
+cd chatbot
+streamlit run main.py
+```
+4. Navigate to Recommender
+```bash
+cd stockrecolib/recommender
+streamlit run app.py
+```
 
 
 [contributors-shield]: https://img.shields.io/github/contributors/ostweg/Stock-Recommender.svg?style=for-the-badge
