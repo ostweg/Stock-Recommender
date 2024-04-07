@@ -14,9 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: stockrecolib/chatbot
+        working-directory: stockrecolib\chatbot
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - name: Rasa Train and Test GitHub Action
         uses: RasaHQ/rasa-train-test-gha@main
         with:
