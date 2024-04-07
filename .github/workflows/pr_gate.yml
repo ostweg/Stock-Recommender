@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: stockrecolib\chatbot
+        working-directory: stockrecolib/chatbot
     steps:
       - uses: actions/checkout@v4
       - name: Rasa Train and Test GitHub Action
@@ -24,6 +24,7 @@ jobs:
           rasa_train: true
           cross_validation: true
           rasa_test: true
+          train_args: --domain stockrecolib/chatbot/
           test_type: all
           publish_summary: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
