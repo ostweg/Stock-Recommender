@@ -1,0 +1,13 @@
+version: "3.1"
+
+rules:
+
+- rule: Explain who you are anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
