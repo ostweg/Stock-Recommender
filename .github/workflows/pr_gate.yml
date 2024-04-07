@@ -24,7 +24,7 @@ jobs:
           rasa_train: true
           cross_validation: true
           rasa_test: true
-          test_nlu_args: '--domain stockrecolib/chatbot/domain.yml'
+          train_args: '--domain stockrecolib/chatbot/domain.yml'
           test_type: all
           publish_summary: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
