@@ -12,7 +12,6 @@ jobs:
   training-testing:
     name: Training and Testing
     runs-on: ubuntu-latest
-    working-directory: chatbot
     steps:
       - uses: actions/checkout@v4
       - name: Rasa Train and Test GitHub Action
