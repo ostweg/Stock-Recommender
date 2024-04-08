@@ -12,12 +12,11 @@ jobs:
   training-testing:
     name: Training and Testing
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: chatbot
+    working-directory: chatbot
     steps:
       - uses: actions/checkout@v4
       - name: Rasa Train and Test GitHub Action
+        working-directory: chatbot
         uses: RasaHQ/rasa-train-test-gha@main
         with:
           data_validate: true
