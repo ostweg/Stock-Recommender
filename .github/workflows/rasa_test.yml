@@ -15,15 +15,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Rasa Train and Test GitHub Action
+        working-directory: chatbot
         uses: RasaHQ/rasa-train-test-gha@main
         with:
           data_validate: true
           rasa_train: true
           cross_validation: true
           rasa_test: true
-          test_nlu_args: '--domain chatbot/domain.yml'
-          train_args: '--domain chatbot/domain.yml'
-          data_validate_args: '--domain chatbot/domain.yml'
+          test_nlu_args: --domain chatbot/domain.yml
+          train_args: --domain chatbot/domain.yml
+          data_validate_args: --domain chatbot/domain.yml
           test_type: all
           publish_summary: true
           github_token: ${{ secrets.GITHUB_TOKEN }}
